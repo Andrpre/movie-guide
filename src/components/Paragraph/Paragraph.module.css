@@ -1,5 +1,5 @@
 .paragraph {
   margin: 0;
-  line-height: 24px;
-  color: #8e95a9;
+  line-height: var(--line-height-small);
+  color: var(--color-text-primary);
 }

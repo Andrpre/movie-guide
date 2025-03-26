@@ -1,0 +1,14 @@
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-small);
+  background-color: #000000a6;
+}
+
+.ratingValue {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-estimation);
+}

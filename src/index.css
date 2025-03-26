@@ -1,21 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 :root {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 32px;
+  --background-color-primary: #242424;
+  --background-color-secondary: #20283ecc;
+  --background-color-accent: #7b6ef6;
+  --background-color-accent-hover: #6055c7;
+  --background-color-menu: #121829cc;
+  --background-color-input: #0000001a;
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --color-text-primary: #8e95a9;
+  --color-text-secondary: #ebeef5;
+  --color-text-accent-primary: #7b6ef6;
+  --color-text-accent-secondary: #37d8a7;
+  --color-text-menu-primary: #a8aebf;
+  --color-text-menu-accent: #ffffff;
+  --color-text-placeholder: #475069;
+  --color-text-estimation: #ffad49;
+  --color-text-button: #ffffff;
+  --color-text-input: #c2c8d7;
+  --color-text-tiny: #beb7fb;
+  --color-text-info-key: #767e94;
+  --color-text-info-value: #c3c8d4;
+
+  --color-border-placeholder: #475069;
+  --color-border: #323b54;
+
+  --font-size-huge-primary: 64px;
+  --font-size-huge-secondary: 48px;
+  --font-size-large: 32px;
+  --font-size-middle: 20px;
+  --font-size-small: 16px;
+  --font-size-tiny-primary: 14px;
+  --font-size-tiny-secondary: 12px;
+
+  --font-weight-primary: 400;
+  --font-weight-secondary: 700;
+  --font-weight-accent: 600;
+
+  --line-height-huge: 80px;
+  --line-height-large: 40px;
+  --line-height-middle: 32px;
+  --line-height-small: 24px;
+  --line-height-tiny: 16px;
+
+  --border-radius-middle: 12px;
+  --border-radius-small: 8px;
+
+  --max-width-layout: 1200px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  font-weight: var(--font-weight-primary);
+  font-size: var(--font-size-middle);
+  line-height: var(--line-height-middle);
+  color: var(--color-text-primary);
+  background-color: var(--background-color-primary);
+  background-image: url("./assets/background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1,
@@ -26,4 +74,16 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

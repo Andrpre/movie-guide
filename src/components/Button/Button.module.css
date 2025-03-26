@@ -1,15 +1,16 @@
 .button {
   padding: 16px 32px;
-  border: 2px solid #7b6ef6;
-  border-radius: 12px;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: #7b6ef6;
-  color: #ffffff;
+  border: 2px solid var(--background-color-accent);
+  border-radius: var(--border-radius-middle);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  background-color: var(--background-color-accent);
+  color: var(--color-text-button);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, border 0.3s;
 }
 
 .button:hover {
-  background-color: #6055c7;
+  background-color: var(--background-color-accent-hover);
+  border: 2px solid var(--background-color-accent-hover);
 }

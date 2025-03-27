@@ -1,4 +1,5 @@
 import Logo from "../Logo/Logo";
+import cn from "classnames";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
               <a className={styles.menuItem} href="#">
                 Мои фильмы
               </a>
-              <a className={`${styles.menuItem} ${styles.login}`} href="#">
+              <a className={cn(styles.menuItem, styles.login)} href="#">
                 <span>Войти</span>
                 <img src="/public/login-icon.svg" alt="Иконка входа" />
               </a>

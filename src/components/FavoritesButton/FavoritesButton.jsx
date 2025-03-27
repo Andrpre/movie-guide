@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cn from "classnames";
 import styles from "./FavoritesButton.module.css";
 
 const FavoritesButton = ({ inFavorite = false }) => {
@@ -11,14 +12,14 @@ const FavoritesButton = ({ inFavorite = false }) => {
   const buttonToAdd = (
     <>
       <img src="/public/icons/like-icon.svg" alt="" />
-      <span className={`${styles.buttonText} ${styles.likeVatiant}`}>В избранное</span>
+      <span className={cn(styles.buttonText, styles.likeVatiant)}>В избранное</span>
     </>
   );
 
   const buttonAdded = (
     <>
       <img src="/public/icons/bookmark-icon.svg" />
-      <span className={`${styles.buttonText} ${styles.bookmarkVatiant}`}>В избраном</span>
+      <span className={cn(styles.buttonText, styles.bookmarkVatiant)}>В избраном</span>
     </>
   );
 

@@ -1,9 +1,12 @@
 import styles from "./InputText.module.css";
+import cn from "classnames";
 
 const Search = ({ placeholder, isSearch }) => {
   return (
     <input
-      className={`${styles.search} ${isSearch ? styles.withIcon : ""}`}
+      className={cn(styles.search, {
+        [styles.withIcon]: isSearch,
+      })}
       placeholder={placeholder}
     />
   );

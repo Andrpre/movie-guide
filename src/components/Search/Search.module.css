@@ -1,0 +1,13 @@
+.search {
+  max-width: 588px;
+}
+
+.description {
+  margin: 16px 0 24px 0;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+  max-width: 511px;
+}

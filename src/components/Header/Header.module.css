@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-color-menu);
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width-layout);
+  height: 80px;
+}
+
+.menuList {
+  display: flex;
+  gap: 16px;
+  font-weight: var(--font-weight-accent);
+}
+
+.menuItem {
+  padding: 12px 16px;
+  font-size: var(--font-size-small);
+  transition: color 0.3s;
+}
+
+.menuItem:hover {
+  color: var(--color-text-menu-accent);
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

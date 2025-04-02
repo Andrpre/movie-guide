@@ -10,10 +10,12 @@ export const useAuthorization = () => {
     const existingUser = localData.find((data) => data.isLogined);
     if (existingUser) {
       setActiveUserName(existingUser.name);
+    } else {
+      setActiveUserName(null);
     }
   }, [localData]);
 
-  const authorizeUser = (login) => {
+  const onAuthorizeUser = (login) => {
     localData;
     const existingUser = localData.find((user) => user.name === login);
     if (existingUser) {
@@ -31,9 +33,9 @@ export const useAuthorization = () => {
     }
   };
 
-  const logoutUser = () => {
+  const onLogoutUser = () => {
     setLocalData(localData.map((user) => ({ ...user, isLogined: false })));
   };
 
-  return [activeUserName, authorizeUser, logoutUser];
+  return [activeUserName, onAuthorizeUser, onLogoutUser];
 };

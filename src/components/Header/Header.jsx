@@ -1,4 +1,5 @@
-import { useAuthorization } from "../../hooks/useAuthorization.hook";
+import { useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
 import Logo from "../Logo/Logo";
 
@@ -6,11 +7,11 @@ import cn from "classnames";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const [activeUserName, _, logoutUser] = useAuthorization();
+  const { activeUserName, onLogoutUser } = useContext(UserContext);
 
   const handleClickLogout = (e) => {
     e.preventDefault();
-    logoutUser();
+    onLogoutUser();
   };
 
   return (

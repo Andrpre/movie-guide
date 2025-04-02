@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { useAuthorization } from "../../hooks/useAuthorization.hook";
+import { useRef, useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
@@ -8,7 +8,7 @@ import InputText from "../../components/InputText/InputText";
 import styles from "./LoginPage.module.css";
 
 const LoginPage = () => {
-  const [_, setUser] = useAuthorization();
+  const { onAuthorizeUser } = useContext(UserContext);
   const inputRef = useRef();
 
   const handleClickLogin = (e) => {
@@ -18,7 +18,7 @@ const LoginPage = () => {
       return;
     }
 
-    setUser(inputRef.current.value);
+    onAuthorizeUser(inputRef.current.value);
     inputRef.current.value = "";
   };
 

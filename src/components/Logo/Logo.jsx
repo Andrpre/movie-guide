@@ -3,7 +3,7 @@ import styles from "./Logo.module.css";
 const Logo = () => {
   return (
     <a href="/" className={styles.logo}>
-      <img src="/public/logo-icon.svg" />
+      <img src="/public/icons/logo-icon.svg" />
     </a>
   );
 };

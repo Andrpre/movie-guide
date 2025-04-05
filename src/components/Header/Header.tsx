@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { FC, MouseEvent } from "react";
+import { useContextSafe } from "../../hooks/useContextSafe";
 import { UserContext } from "../../context/user.context";
 
 import Logo from "../Logo/Logo";
@@ -6,10 +7,10 @@ import Logo from "../Logo/Logo";
 import cn from "classnames";
 import styles from "./Header.module.css";
 
-const Header = () => {
-  const { activeUserName, onLogoutUser } = useContext(UserContext);
+const Header: FC = () => {
+  const { activeUserName, onLogoutUser } = useContextSafe(UserContext);
 
-  const handleClickLogout = (e) => {
+  const handleClickLogout = (e: MouseEvent) => {
     e.preventDefault();
     onLogoutUser();
   };

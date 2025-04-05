@@ -2,9 +2,14 @@ import { useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage.hook";
 import { useState } from "react";
 
-export const useAuthorization = () => {
-  const [activeUserName, setActiveUserName] = useState();
-  const [localData, setLocalData] = useLocalStorage("profiles");
+type User = {
+  name: string;
+  isLogined: boolean;
+};
+
+export const useAuthorization = (): [string | null, (login: string) => void, () => void] => {
+  const [activeUserName, setActiveUserName] = useState<string | null>(null);
+  const [localData, setLocalData] = useLocalStorage<User[]>("profiles", []);
 
   useEffect(() => {
     const existingUser = localData.find((data) => data.isLogined);
@@ -15,7 +20,7 @@ export const useAuthorization = () => {
     }
   }, [localData]);
 
-  const onAuthorizeUser = (login) => {
+  const onAuthorizeUser = (login: string) => {
     localData;
     const existingUser = localData.find((user) => user.name === login);
     if (existingUser) {

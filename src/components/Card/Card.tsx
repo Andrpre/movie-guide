@@ -1,9 +1,11 @@
+import { FC } from "react";
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import Rating from "../Rating/Rating";
 
+import { CardProps } from "./Card.props";
 import styles from "./Card.module.css";
 
-const Card = ({ linkImg, title, rating }) => {
+const Card: FC<CardProps> = ({ linkImg, title, rating }) => {
   return (
     <article className={styles.card}>
       <div className={styles.rating}>

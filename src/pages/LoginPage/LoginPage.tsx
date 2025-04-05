@@ -1,5 +1,6 @@
-import { useRef, useContext } from "react";
+import { useRef, MouseEvent, FC } from "react";
 import { UserContext } from "../../context/user.context";
+import { useContextSafe } from "../../hooks/useContextSafe";
 
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
@@ -7,14 +8,15 @@ import InputText from "../../components/InputText/InputText";
 
 import styles from "./LoginPage.module.css";
 
-const LoginPage = () => {
-  const { onAuthorizeUser } = useContext(UserContext);
-  const inputRef = useRef();
+const LoginPage: FC = () => {
+  const { onAuthorizeUser } = useContextSafe(UserContext);
 
-  const handleClickLogin = (e) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleClickLogin = (e: MouseEvent) => {
     e.preventDefault();
 
-    if (!inputRef.current.value) {
+    if (!inputRef.current?.value) {
       return;
     }
 

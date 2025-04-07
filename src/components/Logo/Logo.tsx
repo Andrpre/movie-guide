@@ -1,11 +1,13 @@
 import { FC } from "react";
+import { NavLink } from "react-router";
+
 import styles from "./Logo.module.css";
 
 const Logo: FC = () => {
   return (
-    <a href="/" className={styles.logo}>
+    <NavLink to="/" className={styles.logo}>
       <img src="/public/icons/logo-icon.svg" />
-    </a>
+    </NavLink>
   );
 };
 

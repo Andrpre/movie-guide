@@ -1,5 +1,5 @@
+import { Movie } from "../../types/apiData";
+
 export interface CardProps {
-  linkImg: string;
-  title: string;
-  rating: number;
+  data: Movie;
 }

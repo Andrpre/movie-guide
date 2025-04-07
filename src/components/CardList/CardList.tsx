@@ -1,14 +1,14 @@
 import { FC } from "react";
 import Card from "../Card/Card";
 
+import { CardListProps } from "./CardList.props";
 import styles from "./CardList.module.css";
-import { mockData } from "../../utils/mockData";
 
-const CardList: FC = () => {
+const CardList: FC<CardListProps> = ({ data }) => {
   return (
     <section className={styles.cardList}>
-      {mockData.map(({ id, linkImg, title, rating }) => (
-        <Card key={id} rating={rating} linkImg={linkImg} title={title} />
+      {data.map((data) => (
+        <Card key={data.id} data={data} />
       ))}
     </section>
   );

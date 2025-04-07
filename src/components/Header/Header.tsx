@@ -1,6 +1,7 @@
 import { FC, MouseEvent } from "react";
 import { useContextSafe } from "../../hooks/useContextSafe";
 import { UserContext } from "../../context/user.context";
+import { NavLink } from "react-router";
 
 import Logo from "../Logo/Logo";
 
@@ -22,18 +23,39 @@ const Header: FC = () => {
         <nav>
           <ul>
             <li className={styles.menuList}>
-              <a className={styles.menuItem} href="#">
+              <NavLink
+                className={({ isActive }) =>
+                  cn(styles.menuItem, {
+                    [styles.activeLink]: isActive,
+                  })
+                }
+                to="/"
+              >
                 Поиск фильмов
-              </a>
-              <a className={styles.menuItem} href="#">
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  cn(styles.menuItem, {
+                    [styles.activeLink]: isActive,
+                  })
+                }
+                to="/favorites"
+              >
                 Мои фильмы
-              </a>
+              </NavLink>
               {activeUserName ? (
                 <>
-                  <a className={cn(styles.menuItem, styles.login)} href="#">
+                  <NavLink
+                    className={({ isActive }) =>
+                      cn(styles.menuItem, styles.login, {
+                        [styles.activeLink]: isActive,
+                      })
+                    }
+                    to="/profile"
+                  >
                     <span>{activeUserName}</span>
                     <img src="/public/icons/user-icon.svg" alt="Иконка входа" />
-                  </a>
+                  </NavLink>
                   <a
                     onClick={handleClickLogout}
                     className={cn(styles.menuItem, styles.login)}
@@ -43,10 +65,17 @@ const Header: FC = () => {
                   </a>
                 </>
               ) : (
-                <a className={cn(styles.menuItem, styles.login)} href="#">
+                <NavLink
+                  className={({ isActive }) =>
+                    cn(styles.menuItem, styles.login, {
+                      [styles.activeLink]: isActive,
+                    })
+                  }
+                  to="/login"
+                >
                   <span>Войти</span>
                   <img src="/public/icons/login-icon.svg" alt="Иконка входа" />
-                </a>
+                </NavLink>
               )}
             </li>
           </ul>

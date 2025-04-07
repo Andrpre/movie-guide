@@ -1,21 +1,25 @@
 import { FC } from "react";
+import { NavLink } from "react-router";
+
 import FavoritesButton from "../FavoritesButton/FavoritesButton";
 import Rating from "../Rating/Rating";
 
-import { CardProps } from "./Card.props";
 import styles from "./Card.module.css";
+import { CardProps } from "./Card.props";
 
-const Card: FC<CardProps> = ({ linkImg, title, rating }) => {
+const Card: FC<CardProps> = ({ data }) => {
   return (
     <article className={styles.card}>
       <div className={styles.rating}>
-        <Rating rating={rating} />
+        <Rating rating={data.rating} />
       </div>
-      <img className={styles.image} src={linkImg} alt={title} />
+      <NavLink to={`/movie/${data.id}`}>
+        <img className={styles.image} src={data.linkImg} alt={data.title} />
+      </NavLink>
       <div className={styles.detail}>
-        <a href="#">
-          <h3 className={styles.title}>{title}</h3>
-        </a>
+        <NavLink to={`/movie/${data.id}`}>
+          <h3 className={styles.title}>{data.title}</h3>
+        </NavLink>
         <FavoritesButton />
       </div>
     </article>

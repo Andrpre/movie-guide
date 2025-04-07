@@ -34,3 +34,7 @@
   align-items: center;
   gap: 8px;
 }
+
+.activeLink {
+  color: var(--color-text-menu-accent);
+}

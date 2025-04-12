@@ -1,6 +1,8 @@
+import { FC } from "react";
 import styles from "./Rating.module.css";
+import { RatingProps } from "./Rating.props";
 
-const Rating = ({ rating }) => {
+const Rating: FC<RatingProps> = ({ rating }) => {
   return (
     <div className={styles.ratingWrapper}>
       <img src="/public/icons/favorites-icon.svg" />

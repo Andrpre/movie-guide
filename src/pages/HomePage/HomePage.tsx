@@ -1,14 +1,16 @@
+import { FC } from "react";
+
 import CardList from "../../components/CardList/CardList";
 import Search from "../../components/Search/Search";
 
-import styles from "./HomePage.module.css";
+import { mockData } from "../../utils/mockData";
 
-const HomePage = () => {
+const HomePage: FC = () => {
   return (
-    <div className={styles.layout}>
+    <>
       <Search />
-      <CardList />
-    </div>
+      <CardList data={mockData} />
+    </>
   );
 };
 

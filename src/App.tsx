@@ -1,18 +1,14 @@
-import { useAuthorization } from "./hooks/useAuthorization.hook";
+import { useAuthorization } from "./hooks/useAuthorization/useAuthorization.hook";
+import { RouterProvider } from "react-router";
 import { UserContext } from "./context/user.context";
-
-import Header from "./components/Header/Header";
-import HomePage from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import { ROUTER } from "./routes/router";
 
 function App() {
   const [activeUserName, onAuthorizeUser, onLogoutUser] = useAuthorization();
 
   return (
     <UserContext.Provider value={{ activeUserName, onAuthorizeUser, onLogoutUser }}>
-      <Header />
-      <LoginPage />
-      <HomePage />
+      <RouterProvider router={ROUTER} />
     </UserContext.Provider>
   );
 }

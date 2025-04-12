@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import cn from "classnames";
 import styles from "./FavoritesButton.module.css";
+import { FavoritesButtonProps } from "./FavoritesButton.Props";
 
-const FavoritesButton = ({ inFavorite = false }) => {
+const FavoritesButton: FC<FavoritesButtonProps> = ({ inFavorite = false }) => {
   const [isFavorite, setIsFavorite] = useState(inFavorite);
 
   const handleClickButton = () => {
-    setIsFavorite(prev => !prev);
-  }
+    setIsFavorite((prev) => !prev);
+  };
 
   const buttonToAdd = (
     <>

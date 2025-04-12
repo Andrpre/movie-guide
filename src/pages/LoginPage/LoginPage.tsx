@@ -1,6 +1,6 @@
 import { useRef, MouseEvent, FC } from "react";
 import { UserContext } from "../../context/user.context";
-import { useContextSafe } from "../../hooks/useContextSafe";
+import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
 
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";

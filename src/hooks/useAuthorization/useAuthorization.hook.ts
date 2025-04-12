@@ -1,11 +1,7 @@
-import { useEffect } from "react";
-import { useLocalStorage } from "./useLocalStorage.hook";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocalStorage } from "../useLocalStorage/useLocalStorage.hook";
 
-type User = {
-  name: string;
-  isLogined: boolean;
-};
+import { User } from "./useAuthorization.props";
 
 export const useAuthorization = (): [string | null, (login: string) => void, () => void] => {
   const [activeUserName, setActiveUserName] = useState<string | null>(null);

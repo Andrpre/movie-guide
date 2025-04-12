@@ -1,5 +1,5 @@
 import { FC, MouseEvent } from "react";
-import { useContextSafe } from "../../hooks/useContextSafe";
+import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
 import { UserContext } from "../../context/user.context";
 import { NavLink } from "react-router";
 

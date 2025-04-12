@@ -7,8 +7,8 @@ import styles from "./CardList.module.css";
 const CardList: FC<CardListProps> = ({ data }) => {
   return (
     <section className={styles.cardList}>
-      {data.map((data) => (
-        <Card key={data.id} data={data} />
+      {data?.description.map((data) => (
+        <Card key={data.#IMDB_ID} data={data} />
       ))}
     </section>
   );

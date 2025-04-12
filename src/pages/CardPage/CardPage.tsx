@@ -1,20 +1,22 @@
-import { FC } from "react";
-import { useParams } from "react-router";
+import { FC, Suspense } from "react";
+import { Await, useLoaderData } from "react-router";
 
 import Title from "../../components/Title/Title";
-import { mockData } from "../../utils/mockData";
+import Loading from "../../components/Loading/Loading";
+import { IMovie } from "../../types/apiData";
 
 const CardPage: FC = () => {
-  const { id } = useParams();
+  const data = useLoaderData();
 
-  const data = mockData.find((el) => el.id === Number(id)) || {
-    id: 1,
-    title: "Заголовок фильма",
-    linkImg: "/",
-    rating: "111",
-  };
-
-  return <Title text={data.title} />;
+  return (
+    <>
+      <Suspense fallback={<Loading />}>
+        <Await resolve={data}>
+          {(resolvedData: IMovie) => <Title text={resolvedData.short.name} />}
+        </Await>
+      </Suspense>
+    </>
+  );
 };
 
 export default CardPage;

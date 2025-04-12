@@ -1,5 +1,5 @@
-import { Movie } from "../../types/apiData";
+import { IMovies } from "../../types/apiData";
 
 export interface CardListProps {
-  data: Movie[];
+  data?: IMovies;
 }

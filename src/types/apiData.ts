@@ -9,9 +9,9 @@ export interface IMovie {
 
 export interface IMovies {
   description: {
-    #IMDB_ID: string;
-    #TITLE: string;
-    #IMG_POSTER: string;
-    #RANK: number;
+    "#IMDB_ID": string;
+    "#TITLE": string;
+    "#IMG_POSTER": string;
+    "#RANK": number;
   }[];
 }

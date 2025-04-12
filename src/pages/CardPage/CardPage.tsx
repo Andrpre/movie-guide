@@ -1,22 +1,13 @@
-import { FC, Suspense } from "react";
-import { Await, useLoaderData } from "react-router";
+import { FC } from "react";
+import { useLoaderData } from "react-router";
 
 import Title from "../../components/Title/Title";
-import Loading from "../../components/Loading/Loading";
 import { IMovie } from "../../types/apiData";
 
 const CardPage: FC = () => {
-  const data = useLoaderData();
+  const movie = useLoaderData() as IMovie;
 
-  return (
-    <>
-      <Suspense fallback={<Loading />}>
-        <Await resolve={data}>
-          {(resolvedData: IMovie) => <Title text={resolvedData.short.name} />}
-        </Await>
-      </Suspense>
-    </>
-  );
+  return <Title text={movie.short.name} />;
 };
 
 export default CardPage;

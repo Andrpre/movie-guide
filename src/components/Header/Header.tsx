@@ -1,7 +1,7 @@
 import { FC, MouseEvent } from "react";
 import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
 import { UserContext } from "../../context/user.context";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 import Logo from "../Logo/Logo";
 
@@ -10,10 +10,13 @@ import styles from "./Header.module.css";
 
 const Header: FC = () => {
   const { activeUserName, onLogoutUser } = useContextSafe(UserContext);
+  const navigate = useNavigate();
 
   const handleClickLogout = (e: MouseEvent) => {
     e.preventDefault();
     onLogoutUser();
+
+    navigate("/auth/login");
   };
 
   return (
@@ -71,7 +74,7 @@ const Header: FC = () => {
                       [styles.activeLink]: isActive,
                     })
                   }
-                  to="/login"
+                  to="/auth/login"
                 >
                   <span>Войти</span>
                   <img src="/public/icons/login-icon.svg" alt="Иконка входа" />

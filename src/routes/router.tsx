@@ -8,6 +8,7 @@ import CardPage from "../pages/CardPage/CardPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import Loading from "../components/Loading/Loading";
 import Error from "../components/Error/Error";
+import ProtectedRouter from "../helpers/ProtectedRouter";
 
 const SearchPage = lazy(() => import("../pages/SearchPage/SearchPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
@@ -16,21 +17,17 @@ const FavoritesPage = lazy(() => import("../pages/FavoritesPage/FavoritesPage"))
 export const ROUTER = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <ProtectedRouter>
+        <Layout />
+      </ProtectedRouter>
+    ),
     children: [
       {
         path: "/",
         element: (
           <Suspense fallback={<Loading />}>
             <SearchPage />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/login",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <LoginPage />
           </Suspense>
         ),
       },
@@ -53,6 +50,20 @@ export const ROUTER = createBrowserRouter([
       {
         path: "*",
         element: <NotFoundPage />,
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <Layout />,
+    children: [
+      {
+        path: "login",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <LoginPage />
+          </Suspense>
+        ),
       },
     ],
   },

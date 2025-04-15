@@ -6,13 +6,19 @@ import Button from "../Button/Button";
 import InputText from "../InputText/InputText";
 
 import styles from "./Search.module.css";
+import { SearchProps } from "./Search.props";
 
-const Search: FC = () => {
+const Search: FC<SearchProps> = ({ onSubmit }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClickButton = (e: MouseEvent) => {
     e.preventDefault();
-    console.log(inputRef.current?.value);
+
+    if (!inputRef.current?.value) {
+      return;
+    }
+
+    onSubmit(inputRef.current.value);
   };
 
   return (

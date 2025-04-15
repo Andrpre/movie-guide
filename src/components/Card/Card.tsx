@@ -11,14 +11,14 @@ const Card: FC<CardProps> = ({ data }) => {
   return (
     <article className={styles.card}>
       <div className={styles.rating}>
-        <Rating rating={data.rating} />
+        <Rating rating={data.short.aggregateRating.ratingCount} />
       </div>
-      <NavLink to={`/movie/${data.id}`}>
-        <img className={styles.image} src={data.linkImg} alt={data.title} />
+      <NavLink to={`/movie/${data.imdbId}`}>
+        <img className={styles.image} src={data.short.image} alt={data.short.name} />
       </NavLink>
       <div className={styles.detail}>
-        <NavLink to={`/movie/${data.id}`}>
-          <h3 className={styles.title}>{data.title}</h3>
+        <NavLink to={`/movie/${data.imdbId}`}>
+          <h3 className={styles.title}>{data.short.name}</h3>
         </NavLink>
         <FavoritesButton />
       </div>

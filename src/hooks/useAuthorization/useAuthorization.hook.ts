@@ -17,7 +17,6 @@ export const useAuthorization = (): [string | null, (login: string) => void, () 
   }, [localData]);
 
   const onAuthorizeUser = (login: string) => {
-    localData;
     const existingUser = localData.find((user) => user.name === login);
     if (existingUser) {
       setLocalData(

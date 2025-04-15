@@ -1,4 +1,5 @@
 import { useRef, MouseEvent, FC } from "react";
+import { useNavigate } from "react-router";
 import { UserContext } from "../../context/user.context";
 import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
 
@@ -10,6 +11,7 @@ import styles from "./LoginPage.module.css";
 
 const LoginPage: FC = () => {
   const { onAuthorizeUser } = useContextSafe(UserContext);
+  const navigate = useNavigate();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,6 +24,8 @@ const LoginPage: FC = () => {
 
     onAuthorizeUser(inputRef.current.value);
     inputRef.current.value = "";
+
+    navigate("/");
   };
 
   return (

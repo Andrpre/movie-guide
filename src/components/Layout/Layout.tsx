@@ -1,19 +1,25 @@
 import { FC } from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 
 import Header from "../Header/Header";
+import Loading from "../Loading/Loading";
 
 import styles from "./Layout.module.css";
 
-const layout: FC = () => {
+const Layout: FC = () => {
+  const navigation = useNavigation();
+
+  const isLoading = navigation.state === "loading";
+
   return (
     <>
       <Header />
       <main className={styles.layout}>
-        <Outlet />
+        {isLoading && <Loading />}
+        {!isLoading && <Outlet />}
       </main>
     </>
   );
 };
 
-export default layout;
+export default Layout;

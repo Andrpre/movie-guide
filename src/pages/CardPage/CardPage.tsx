@@ -1,20 +1,13 @@
 import { FC } from "react";
-import { useParams } from "react-router";
+import { useLoaderData } from "react-router";
 
 import Title from "../../components/Title/Title";
-import { mockData } from "../../utils/mockData";
+import { IMovie } from "../../types/apiData";
 
 const CardPage: FC = () => {
-  const { id } = useParams();
+  const movie = useLoaderData() as IMovie;
 
-  const data = mockData.find((el) => el.id === Number(id)) || {
-    id: 1,
-    title: "Заголовок фильма",
-    linkImg: "/",
-    rating: "111",
-  };
-
-  return <Title text={data.title} />;
+  return <Title text={movie.short.name} />;
 };
 
 export default CardPage;

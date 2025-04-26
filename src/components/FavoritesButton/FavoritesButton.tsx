@@ -1,13 +1,34 @@
-import { FC, useState } from "react";
-import cn from "classnames";
-import styles from "./FavoritesButton.module.css";
+import { FC, useMemo } from "react";
+import { useDispatch, useSelector } from "../../store/hook";
+import {
+  addToFavorites,
+  removeFromFavorites,
+  selectFavorites,
+} from "../../store/slices/favorites.slice";
+import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
+import { UserContext } from "../../context/user.context";
+
 import { FavoritesButtonProps } from "./FavoritesButton.Props";
 
-const FavoritesButton: FC<FavoritesButtonProps> = ({ inFavorite = false }) => {
-  const [isFavorite, setIsFavorite] = useState(inFavorite);
+import styles from "./FavoritesButton.module.css";
+import cn from "classnames";
+
+const FavoritesButton: FC<FavoritesButtonProps> = ({ data }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+  const { activeUserName } = useContextSafe(UserContext);
+
+  const isInFavorites = useMemo(
+    () => favorites.some((item) => item.imdbId === data.imdbId),
+    [favorites, data.imdbId]
+  );
 
   const handleClickButton = () => {
-    setIsFavorite((prev) => !prev);
+    dispatch(
+      !isInFavorites
+        ? addToFavorites({ userName: activeUserName, ...data })
+        : removeFromFavorites(data.imdbId)
+    );
   };
 
   const buttonToAdd = (
@@ -26,7 +47,7 @@ const FavoritesButton: FC<FavoritesButtonProps> = ({ inFavorite = false }) => {
 
   return (
     <button className={styles.favoritesButton} onClick={handleClickButton}>
-      {isFavorite ? buttonAdded : buttonToAdd}
+      {isInFavorites ? buttonAdded : buttonToAdd}
     </button>
   );
 };

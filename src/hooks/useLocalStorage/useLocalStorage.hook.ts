@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// Обобщённый хук с generic-параметром <T>
 export const useLocalStorage = <T>(key: string, initialValue: T): [T, (newValue: T) => void] => {
   const [data, setData] = useState<T>(() => {
     try {

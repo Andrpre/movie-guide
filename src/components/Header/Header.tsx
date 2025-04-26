@@ -1,7 +1,9 @@
 import { FC, MouseEvent } from "react";
 import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
 import { UserContext } from "../../context/user.context";
+import { useSelector } from "../../store/hook";
 import { NavLink, useNavigate } from "react-router";
+import { selectFavorites } from "../../store/slices/favorites.slice";
 
 import Logo from "../Logo/Logo";
 
@@ -11,7 +13,10 @@ import styles from "./Header.module.css";
 const Header: FC = () => {
   const { activeUserName, onLogoutUser } = useContextSafe(UserContext);
   const navigate = useNavigate();
+  const favorites = useSelector(selectFavorites);
 
+  const quantityFilms = favorites.length;
+  
   const handleClickLogout = (e: MouseEvent) => {
     e.preventDefault();
     onLogoutUser();
@@ -38,13 +43,14 @@ const Header: FC = () => {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  cn(styles.menuItem, {
+                  cn(styles.menuItem, styles.myFavorite, {
                     [styles.activeLink]: isActive,
                   })
                 }
                 to="/favorites"
               >
                 Мои фильмы
+                <span className={styles.quantityFilms}>{quantityFilms}</span>
               </NavLink>
               {activeUserName ? (
                 <>

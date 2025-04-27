@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "../../store/hook";
 import { selectFavorites } from "../../store/slices/favorites.slice";
-import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
-import { UserContext } from "../../context/user.context";
+import { selectActiveUserName } from "../../store/slices/users.slice";
 
 import { convertToIMovies } from "../../helpers/convertToIMovies";
 
@@ -11,7 +10,7 @@ import CardList from "../../components/CardList/CardList";
 import Empty from "../../components/Empty/Empty";
 
 const FavoritesPage: FC = () => {
-  const { activeUserName } = useContextSafe(UserContext);
+  const activeUserName = useSelector(selectActiveUserName);
   const favorites = useSelector(selectFavorites);
   const favoritesMovies = convertToIMovies(favorites);
 

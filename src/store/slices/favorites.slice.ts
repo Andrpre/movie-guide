@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IMovie, IMovieWithUserName } from "../../types/apiData";
+import { IMovieWithUserName } from "../../types/apiData";
 
 interface FavoritesState {
   items: IMovieWithUserName[];
@@ -14,14 +14,17 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites: (state, action: PayloadAction<IMovieWithUserName>) => {
-      const existingItem = state.items.find((item) => item.imdbId === action.payload.imdbId);
-      if (!existingItem) {
-        state.items.push(action.payload);
-        localStorage.setItem("favorites", JSON.stringify(state.items));
-      }
+      state.items.push(action.payload);
+      localStorage.setItem("favorites", JSON.stringify(state.items));
     },
-    removeFromFavorites: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter((item) => item.imdbId !== action.payload);
+    removeFromFavorites: (state, action: PayloadAction<{ imdbId: string; activeUserName: string | null }>) => {
+      state.items = state.items.filter((item) => {
+        if (item.userName !== action.payload.activeUserName) {
+          return true;
+        }
+
+        return item.imdbId !== action.payload.imdbId;
+      });
       localStorage.setItem("favorites", JSON.stringify(state.items));
     },
   },

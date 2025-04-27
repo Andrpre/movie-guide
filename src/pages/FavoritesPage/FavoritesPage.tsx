@@ -8,20 +8,26 @@ import { convertToIMovies } from "../../helpers/convertToIMovies";
 
 import Title from "../../components/Title/Title";
 import CardList from "../../components/CardList/CardList";
+import Empty from "../../components/Empty/Empty";
 
 const FavoritesPage: FC = () => {
   const { activeUserName } = useContextSafe(UserContext);
   const favorites = useSelector(selectFavorites);
   const favoritesMovies = convertToIMovies(favorites);
 
-  const personalFavoriteMovies = favoritesMovies.description.filter(
-    (movie) => movie.userName === activeUserName
-  );
+  const personalFavoriteMovies = favoritesMovies.description.filter((movie) => movie.userName === activeUserName);
+  const shouldShowFavorites = personalFavoriteMovies.length;
 
   return (
     <>
-      <Title text="Избранное" />
-      <CardList data={{ description: personalFavoriteMovies }} />
+      {shouldShowFavorites ? (
+        <>
+          <Title text="Избранное" />
+          <CardList data={{ description: personalFavoriteMovies }} />
+        </>
+      ) : (
+        <Empty title="Пусто" text="Добавьте фильм в избранное, чтобы сохранить его здесь" />
+      )}
     </>
   );
 };

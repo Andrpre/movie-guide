@@ -15,8 +15,9 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const favorites = useSelector(selectFavorites);
 
-  const quantityFilms = favorites.length;
-  
+  const quantityFilms = favorites.filter((movie) => movie.userName === activeUserName).length;
+  const hasFilms = Boolean(quantityFilms);
+
   const handleClickLogout = (e: MouseEvent) => {
     e.preventDefault();
     onLogoutUser();
@@ -50,7 +51,7 @@ const Header: FC = () => {
                 to="/favorites"
               >
                 Мои фильмы
-                <span className={styles.quantityFilms}>{quantityFilms}</span>
+                {hasFilms && <span className={styles.quantityFilms}>{quantityFilms}</span>}
               </NavLink>
               {activeUserName ? (
                 <>
@@ -65,11 +66,7 @@ const Header: FC = () => {
                     <span>{activeUserName}</span>
                     <img src="/public/icons/user-icon.svg" alt="Иконка входа" />
                   </NavLink>
-                  <a
-                    onClick={handleClickLogout}
-                    className={cn(styles.menuItem, styles.login)}
-                    href="#"
-                  >
+                  <a onClick={handleClickLogout} className={cn(styles.menuItem, styles.login)} href="#">
                     Выйти
                   </a>
                 </>

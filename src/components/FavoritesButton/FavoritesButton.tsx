@@ -1,10 +1,6 @@
 import { FC, useMemo } from "react";
 import { useDispatch, useSelector } from "../../store/hook";
-import {
-  addToFavorites,
-  removeFromFavorites,
-  selectFavorites,
-} from "../../store/slices/favorites.slice";
+import { addToFavorites, removeFromFavorites, selectFavorites } from "../../store/slices/favorites.slice";
 import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
 import { UserContext } from "../../context/user.context";
 
@@ -19,16 +15,12 @@ const FavoritesButton: FC<FavoritesButtonProps> = ({ data }) => {
   const { activeUserName } = useContextSafe(UserContext);
 
   const isInFavorites = useMemo(
-    () => favorites.some((item) => item.imdbId === data.imdbId),
+    () => favorites.some((item) => item.imdbId === data.imdbId && item.userName === activeUserName),
     [favorites, data.imdbId]
   );
 
   const handleClickButton = () => {
-    dispatch(
-      !isInFavorites
-        ? addToFavorites({ userName: activeUserName, ...data })
-        : removeFromFavorites(data.imdbId)
-    );
+    dispatch(!isInFavorites ? addToFavorites({ userName: activeUserName, ...data }) : removeFromFavorites(data.imdbId));
   };
 
   const buttonToAdd = (

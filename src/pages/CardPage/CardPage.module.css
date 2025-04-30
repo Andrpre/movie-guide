@@ -1,0 +1,12 @@
+.titleWrapper {
+  padding: 40px;
+  background-color: var(--background-color-secondary);
+  border-radius: var(--border-radius-large);
+}
+
+.titleAdditional {
+  color: var(--color-text-tiny);
+  font-size: var(--font-size-tiny-secondary);
+  line-height: var(--line-height-tiny);
+}
+

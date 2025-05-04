@@ -3,7 +3,17 @@ export interface IMovie {
   short: {
     name: string;
     image: string;
-    aggregateRating: { ratingCount: number };
+    aggregateRating: { ratingCount: number; ratingValue: number };
+    description?: string;
+    datePublished?: string;
+    duration?: string;
+    genre?: string[];
+    "@type"?: string;
+    review?: {
+      name: string;
+      dateCreated: string;
+      reviewBody: string;
+    };
   };
 }
 

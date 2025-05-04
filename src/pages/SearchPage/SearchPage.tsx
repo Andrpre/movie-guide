@@ -5,7 +5,7 @@ import CardList from "../../components/CardList/CardList";
 import Search from "../../components/Search/Search";
 import Error from "../../components/Error/Error";
 import Loading from "../../components/Loading/Loading";
-import EmptySearchResult from "../../components/EmptySearchResult/EmptySearchResult";
+import EmptySearchResult from "../../components/Empty/Empty";
 
 import { PREFIX } from "../../helpers/API";
 import { IMovies } from "../../types/apiData";
@@ -52,7 +52,12 @@ const SearchPage: FC = () => {
       {isLoading && <Loading />}
       {error && <Error />}
 
-      {shouldShowEmptySearchResult && <EmptySearchResult />}
+      {shouldShowEmptySearchResult && (
+        <EmptySearchResult
+          title="Упс... Ничего не найдено"
+          text="Попробуйте изменить запрос или ввести более точное название фильма"
+        />
+      )}
       {shouldShowCardList && <CardList data={moviesData} />}
     </>
   );

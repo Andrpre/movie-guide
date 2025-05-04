@@ -1,0 +1,54 @@
+.titleWrapper {
+  padding: 40px;
+  background-color: var(--background-color-secondary);
+  border-radius: var(--border-radius-large);
+}
+
+.titleAdditional {
+  color: var(--color-text-tiny);
+  font-size: var(--font-size-tiny-secondary);
+  line-height: var(--line-height-tiny);
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 80px;
+}
+
+.cardImage {
+  width: 100%;
+  border-radius: var(--border-radius-large);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardOpt {
+  display: flex;
+  gap: 24px;
+}
+
+.params {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardReview {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardReviewTitle {
+  color: var(--color-text-info-key);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-primary);
+  line-height: var(--line-height-small);
+}

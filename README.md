@@ -1,12 +1,57 @@
-# React + Vite
+# Movie Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Movie Guide** — это веб-приложение для поиска и просмотра информации о фильмах, разработанное с использованием React, Redux и TypeScript. Приложение позволяет пользователям искать фильмы, просматривать подробную информацию о них и управлять списком избранных фильмов.
 
-Currently, two official plugins are available:
+## Функциональность
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Поиск фильмов по названию с использованием API.
+* Отображение подробной информации о выбранном фильме.
+* Добавление и удаление фильмов из списка избранных.
+* Управление состоянием приложения с помощью Redux.
+* Быстрая и эффективная сборка проекта с использованием Vite.
 
-## Expanding the ESLint configuration
+## Технологии
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **React** — библиотека для создания пользовательских интерфейсов.
+* **Redux** — управление состоянием приложения.
+* **TypeScript** — статическая типизация для JavaScript.
+* **Vite** — инструмент для быстрой сборки и разработки.
+* **ESLint** — анализ кода для обеспечения качества и согласованности.
+* **pnpm** — менеджер пакетов для быстрой и эффективной установки зависимостей.
+
+## Установка и запуск
+
+### 1. Клонирование репозитория
+
+```bash
+git clone https://github.com/Andrpre/movie-guide.git
+cd movie-guide
+```
+
+### 2. Установка зависимостей
+
+Убедитесь, что у вас установлен [pnpm](https://pnpm.io/). Затем выполните:
+
+```bash
+pnpm install
+```
+
+### 3. Запуск приложения
+
+```bash
+pnpm dev
+```
+
+Приложение будет доступно по адресу: [http://localhost:5173](http://localhost:5173)
+
+## Скрипты
+
+* `pnpm dev` — запуск приложения в режиме разработки.
+* `pnpm build` — сборка приложения для продакшена.
+* `pnpm preview` — предварительный просмотр собранного приложения.
+* `pnpm lint` — анализ кода с помощью ESLint.
+
+## Примечания
+
+* Проект использует современную архитектуру с разделением на компоненты, страницы и слайсы Redux.
+* Для управления состоянием используется Redux Toolkit, что упрощает создание слайсов и асинхронных действий.

@@ -1,7 +1,7 @@
 import { useRef, MouseEvent, FC } from "react";
 import { useNavigate } from "react-router";
-import { UserContext } from "../../context/user.context";
-import { useContextSafe } from "../../hooks/useContextSafe/useContextSafe";
+import { useDispatch } from "../../store/hook";
+import { authorizeUser } from "../../store/slices/users.slice";
 
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
@@ -10,7 +10,7 @@ import InputText from "../../components/InputText/InputText";
 import styles from "./LoginPage.module.css";
 
 const LoginPage: FC = () => {
-  const { onAuthorizeUser } = useContextSafe(UserContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -22,7 +22,7 @@ const LoginPage: FC = () => {
       return;
     }
 
-    onAuthorizeUser(inputRef.current.value);
+    dispatch(authorizeUser(inputRef.current.value));
     inputRef.current.value = "";
 
     navigate("/");

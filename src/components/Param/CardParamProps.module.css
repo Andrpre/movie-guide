@@ -1,0 +1,15 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: var(--color-text-info-key);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text {
+  color: var(--color-text-info-value);
+}

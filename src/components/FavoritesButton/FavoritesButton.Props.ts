@@ -1,3 +1,5 @@
+import { IMovie } from "../../types/apiData";
+
 export interface FavoritesButtonProps {
-  inFavorite?: boolean;
+  data: IMovie;
 }

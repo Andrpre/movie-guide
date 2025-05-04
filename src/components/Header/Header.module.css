@@ -38,3 +38,21 @@
 .activeLink {
   color: var(--color-text-menu-accent);
 }
+
+.myFavorite {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantityFilms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  color: var(--color-text-menu-accent);
+  font-size: var(--font-size-tiny-primary);
+  background-color: var(--background-color-accent);
+  border-radius: 50%;
+}

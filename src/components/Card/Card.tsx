@@ -20,7 +20,7 @@ const Card: FC<CardProps> = ({ data }) => {
         <NavLink to={`/movie/${data.imdbId}`}>
           <h3 className={styles.title}>{data.short.name}</h3>
         </NavLink>
-        <FavoritesButton />
+        <FavoritesButton data={data} />
       </div>
     </article>
   );

@@ -1,10 +1,11 @@
 import { ReactNode, useState, useEffect } from "react";
 import { Navigate } from "react-router";
+import { selectActiveUserName } from "../store/slices/users.slice";
 
-import { useAuthorization } from "../hooks/useAuthorization/useAuthorization.hook";
+import { useSelector } from "../store/hook";
 
 const ProtectedRouter = ({ children }: { children: ReactNode }) => {
-  const [activeUserName] = useAuthorization();
+  const activeUserName = useSelector(selectActiveUserName);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Когда данные из localStorage загружены, обновляем состояние

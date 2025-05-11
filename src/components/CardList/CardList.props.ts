@@ -1,5 +1,5 @@
-import { IMovies } from "../../types/apiData";
+import { IMovies, IMoviesWithUserName } from "../../types/apiData";
 
 export interface CardListProps {
-  data: IMovies;
+  data: IMovies | IMoviesWithUserName;
 }
